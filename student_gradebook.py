@@ -22,7 +22,7 @@ def add_course(gradebook):
     code = input("Enter course code: ").upper().strip()
 
     if code in gradebook:
-        print("❌ Course already exists!")
+        print(" Course already exists!")
         return
 
     name = input("Enter course name: ").strip()
@@ -30,7 +30,7 @@ def add_course(gradebook):
         credits = int(input("Enter credits: ").strip())
         score = float(input("Enter score (0–100): ").strip())
     except ValueError:
-        print("❌ Invalid number format!")
+        print("Invalid number format!")
         return
 
     semester = input("Enter semester (e.g., 2024A): ").strip()
@@ -43,14 +43,14 @@ def add_course(gradebook):
     }
 
     save_data(gradebook)
-    print("✅ Course added successfully!")
+    print("Course added successfully!")
 
 
 def update_course(gradebook):
     code = input("Enter course code to update: ").upper().strip()
 
     if code not in gradebook:
-        print("❌ Course not found!")
+        print("Course not found!")
         return
 
     print("Leave a field empty to keep the current value.")
@@ -66,34 +66,34 @@ def update_course(gradebook):
         try:
             gradebook[code]["credits"] = int(credits)
         except ValueError:
-            print("❌ Invalid credits, keeping old value.")
+            print(" Invalid credits, keeping old value.")
     if semester:
         gradebook[code]["semester"] = semester
     if score:
         try:
             gradebook[code]["score"] = float(score)
         except ValueError:
-            print("❌ Invalid score, keeping old value.")
+            print("Invalid score, keeping old value.")
 
     save_data(gradebook)
-    print("✅ Course updated successfully!")
+    print("Course updated successfully!")
 
 
 def delete_course(gradebook):
     code = input("Enter course code to delete: ").upper().strip()
 
     if code not in gradebook:
-        print("❌ Course not found!")
+        print("Course not found!")
         return
 
     del gradebook[code]
     save_data(gradebook)
-    print("🗑️ Course deleted successfully!")
+    print("Course deleted successfully!")
 
 
 def compute_gpa(gradebook):
     if not gradebook:
-        print("⚠️ No courses available.")
+        print("No courses available.")
         return
 
     total_points = 0
@@ -104,12 +104,12 @@ def compute_gpa(gradebook):
         total_credits += c["credits"]
 
     gpa = total_points / total_credits
-    print(f"🎓 Your GPA is: {gpa:.2f}")
+    print(f"Your GPA is: {gpa:.2f}")
 
 
 def display_courses(gradebook):
     if not gradebook:
-        print("⚠️ No courses to display.")
+        print("No courses to display.")
         return
 
     print("\n====== COURSE LIST ======")
@@ -146,7 +146,7 @@ def main():
             print("Goodbye!")
             break
         else:
-            print("❌ Invalid option. Try again.")
+            print("Invalid option. Try again.")
 
 
 if __name__ == "__main__":
